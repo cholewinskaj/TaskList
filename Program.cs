@@ -93,22 +93,5 @@ namespace Nowe_zadanie
             ConsolePrinter consolePrinter = new ConsolePrinter();
             consolePrinter.PrintTasks(table);
         }
-
-        /*  static void AdTasksLoop(ToDoApp toDoApp)
-         {
-             string cont = "y";
-             while (cont == "y")
-             {
-                 toDoApp.CreateNewTask();
-                 Console.WriteLine("Do you want to continue? n/y");
-                 cont = Console.ReadLine();
-             }
-         }
-         static void AddSampleTasks(ToDoApp toDoApp)
-         {
-             toDoApp.CreateNewTask("kawa");
-             toDoApp.CreateNewTask("woda");
-             toDoApp.CreateNewTask("kapcie");
-         } */
     }
 }
