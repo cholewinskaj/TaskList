@@ -7,7 +7,7 @@ namespace Nowe_zadanie
 {
     class ToDoApp
     {
-        private List<Task> _taskList;
+        public List<Task> _taskList;
         public void CreateNewTask()
         {
             Console.WriteLine("Enter description for new task");
@@ -35,29 +35,9 @@ namespace Nowe_zadanie
             {
                 Task task = _taskList[i];
                 Console.WriteLine($"{i + 1}. [{task.ShowCheck()}] {task.Description}");
+                FileSaver fileSaver = new FileSaver();
+                fileSaver.SaveFiles();                
             }
-            // zapis do pliku
-            // string[] lines = { $"{_taskList}" };
-            string path = @"C:\Users\hermiodek\Desktop\MojaLista.txt";
-            // if (!File.Exists(path))
-            string[] createText = new string[_taskList.Count];
-                for (int a = 0; a < _taskList.Count; a++)
-                {
-                    Task task = _taskList[a];
-                    
-                    createText[a] = $"{a + 1}. [{task.ShowCheck()}] {task.Description}";
-
-                }
-                    File.WriteAllLines(path, createText, Encoding.UTF8);
-
-                /* inny sposb
-                 StreamWriter sw = File.CreateText(path);
-
-                 sw.WriteLine(lines);
-                 sw.Close();  */
-            Console.WriteLine("file");
-            string readText = File.ReadAllText(path, Encoding.UTF8);
-            Console.WriteLine(readText);
         }
 
         public void RemoveTasks()
