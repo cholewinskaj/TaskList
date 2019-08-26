@@ -31,8 +31,7 @@ namespace Nowe_zadanie
              sw.WriteLine(lines);
              sw.Close();  */
             Console.WriteLine("file");
-            string readText = File.ReadAllText(path, Encoding.UTF8);
-            Console.WriteLine(readText);
+            
         }
     }
 }
