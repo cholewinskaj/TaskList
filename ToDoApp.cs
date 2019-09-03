@@ -5,14 +5,10 @@ namespace Nowe_zadanie
 {
     class ToDoApp
     {
-        public List<Task> _taskList;
-      
+        public List<Task> _taskList = new List<Task>();
+
         public void CreateNewTask(string taskDescription)
         {
-            if (_taskList == null)
-            {
-                _taskList = new List<Task>();
-            }
             Task task = new Task();
             task.Description = taskDescription;
             _taskList.Add(task);
@@ -48,6 +44,13 @@ namespace Nowe_zadanie
                 Task taskForChange = _taskList[index - 1];
                 taskForChange.Check = !taskForChange.Check;
            // }
+        }
+
+        public void AddTaskFromLine(string line)
+        {
+          Task task = Task.Parse(line);
+
+            _taskList.Add(task);       
         }
     }
 }

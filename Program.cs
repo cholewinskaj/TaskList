@@ -8,7 +8,7 @@ namespace Nowe_zadanie
         public static void Main(string[] args)
         {
             toDoApp = new ToDoApp(); // 11,08,19 wywyolanie menu 
-
+            FileSaver fileSaver = new FileSaver();
             Console.Title = " Start Menu ";
 
             bool shouldContinue = true;
@@ -21,7 +21,8 @@ namespace Nowe_zadanie
                 Console.WriteLine("3. Show the list");
                 Console.WriteLine("4. Change the task");
                 Console.WriteLine("5. Save to file ");
-                Console.WriteLine("6. Finish");
+                Console.WriteLine("6. Read from file ");
+                Console.WriteLine("7. Finish");
 
                 ConsoleKeyInfo key = Console.ReadKey();
                 Console.Clear();
@@ -42,7 +43,7 @@ namespace Nowe_zadanie
                         }
                         catch (IndexOutOfRangeException ex)
                         {
-                            Console.WriteLine(ex.Message);  
+                            Console.WriteLine(ex.Message);
                             Console.WriteLine($"{index1} is out of the list range");
                         }
                         break;
@@ -58,18 +59,26 @@ namespace Nowe_zadanie
                             toDoApp.ChangeTask(index);
                         }
                         catch (Exception ex)
-                        {          
-                            Console.WriteLine(ex.Message);                  
+                        {
+                            Console.WriteLine(ex.Message);
                             Console.WriteLine($"{index} is out of the list range");
                         }
                         break;
                     case ConsoleKey.D5:
                         string[] table1 = toDoApp.PrintTasks();
-                        FileSaver fileSaver = new FileSaver();
                         fileSaver.SaveFiles(table1);
                         break;
-                    case ConsoleKey.Escape:
                     case ConsoleKey.D6:
+                        string[] readedLines = fileSaver.ReadFile();
+                       
+                        for (int i = 0; i < readedLines.Length; i++)
+                        {
+                            toDoApp.AddTaskFromLine(readedLines[i]);
+                        }
+                        
+                        break;
+                    case ConsoleKey.Escape:
+                    case ConsoleKey.D7:
                         shouldContinue = false;
                         break; // niewiem czy to musi byc Environment.Exit(0)
                     default: break;
@@ -93,5 +102,16 @@ namespace Nowe_zadanie
             ConsolePrinter consolePrinter = new ConsolePrinter();
             consolePrinter.PrintTasks(table);
         }
+
+
+        static void Temp()
+        {
+            for (int i= 9; i>0; i=i-2)
+            {
+Console.WriteLine(i);
+            }
+
+
+                    }
     }
 }
